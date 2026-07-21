@@ -14,3 +14,37 @@ int main() {
         }
     }
 }
+
+#*CLOSEST NUMBER*# (21/7/26)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+int closestnumber(int n, int m)
+{
+    int closest = 0;
+    int minDifference = INT_MAX;
+    for (int i = n - abs(m); i <= n + abs(m); ++i)
+    {
+        if (i%m == 0)
+        {
+            int difference = abs (n - i);
+            if (difference < minDifference || (difference == minDifference && abs(i) > abs(closest)))
+            {
+            closest = i;
+            minDifference = difference;
+            }
+        }
+    }
+    return closest;
+}
+
+int main ()
+{
+    int num, multiple;
+    scanf ("%d", &num);
+    scanf ("%d", &multiple);
+    printf ("%d\n", closestnumber(num, multiple));
+    return 0;
+}
